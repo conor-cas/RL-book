@@ -13,6 +13,8 @@ class InventoryState:
     def inventory_position(self) -> int:
         return self.on_hand + self.on_order
 
+class Snakes_and_Ladders:
+    position: int
 
 class SimpleInventoryMPFinite(FiniteMarkovProcess[InventoryState]):
 
@@ -42,6 +44,25 @@ class SimpleInventoryMPFinite(FiniteMarkovProcess[InventoryState]):
                     for i in range(ip + 1)
                 }
                 d[InventoryState(alpha, beta)] = Categorical(state_probs_map)
+        d: Dict[Snakes_and_Ladders, FiniteDistribution[Snakes_and_Ladders]] = {}
+
+        ladders_snakes_dict = {1: 38, 4: 14, 8: 30, 21: 42,
+
+                               28: 76, 50: 67, 71: 92, 80: 99,
+
+                               97: 78, 95: 56, 88: 24, 62: 18, 48: 26,
+
+                               36: 6, 32: 10}
+
+        for index in range(100):
+            state = Snakes_and_Ladders(index)
+            inner_map: Mapping[state, float] = {
+                Snakes_and_Ladders(ladders_snakes_dict[index + roll] if index + roll in ladders_snakes_dict else
+                                   index + roll): (1/6) for roll in range(1, 7)
+
+            }
+            d[Snakes_and_Ladders(index)] = Categorical(inner_map)
+
         return d
 
 

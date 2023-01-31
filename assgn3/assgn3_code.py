@@ -7,14 +7,16 @@ pi = [0, .5, .5] #list of floats,  probability of job offer for each wage, 0 is 
 alpha = .2
 states = [(0,1), (0,2),(1,1),(2,2)] # list of tuples
 accept_rewards = {(0,1): wages[1], (0,2): wages[2], (1,1): wages[1], (2,2): wages[2]} # dict
-reject_rewards = {(0,1): wages[0], (0,2): wages[0], (1,1): 0, (2,2): 0} # dict
+# "rejections rewards set to zero for employed states so that policy will always "accept"
+# they will lose job with the correct prob regardless of accept or reject
+reject_rewards = {(0,1): wages[0], (0,2): wages[0], (1,1): 0, (2,2): 0} # dict,
 #dict of Dicts
 acc_probs = {(0,1): {(1,1): 1},
              (0,2): {(2,2): 1},
              (1,1): {(1,1): 1-alpha, (0,1): alpha * pi[1], (0,2): alpha * pi[2]},
              (2,2): {(2,2): 1-alpha, (0,1): alpha * pi[1], (0,2): alpha * pi[2]}
              }
-#dict of dicts
+#dict of dicts,
 rej_probs = {(0,1): {(0,1): pi[1], (0,2): pi[2]},
              (0,2): {(0,1): pi[1], (0,2): pi[2]},
              (1,1): {(1,1): 1-alpha, (0,1): alpha * pi[1], (0,2): alpha * pi[2]},

@@ -1,7 +1,7 @@
 import math
 
 #2 jobs plus wage_0,
-wages = [4, 11, 7] # list, can adjust to see how policy changes, first is unemployment wage
+wages = [4, 11, 3] # list, can adjust to see how policy changes, first is unemployment wage
 gamma =.9 #float, future discount
 pi = [0, .5, .5] #list of floats,  probability of job offer for each wage, 0 is unemployment wage
 alpha = .2

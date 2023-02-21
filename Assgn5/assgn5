@@ -1,0 +1,14 @@
+
+
+#Model the American option optimal stopping problem as a Markov decision process (MDP) and solve it using dynamic programming.
+
+#Create the transition function using MarkovProcess and a normal distribution around the current stock price.
+
+class OptimalExercise:
+
+    spot_price: float
+    payoff: Callable[[float, float], float]
+    expiry: float
+    rate: float
+    vol: float
+    num_steps: int

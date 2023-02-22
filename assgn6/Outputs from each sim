@@ -1,0 +1,9 @@
+Optimal sim:
+mean Utility 97.78275477826169
+std Utility 9.472337260021307
+
+Naiive sim:
+mean Utility 97.39326873734213
+std Utility 16.469361495913724
+
+As we can see the means are close but Optimal is better and the standard deviation of the naiive sim is far worse.
